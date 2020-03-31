@@ -4,6 +4,9 @@ class UsersController < ApplicationController
     get '/login' do 
         erb :login
     end 
+    #receive the login form, find the user, log the user in
+    post '/login' do 
+    end 
 
     #signup
     get '/signup' do 
