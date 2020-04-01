@@ -1,1 +1,17 @@
-NEW FORM
+<h2>New Aerial Entry: </h2>
+
+<form class="" action="/aerial_entries" method="post">
+    <label for="move_name">Move Name: </label>
+    <input type="text" name="move_name" value="">
+    <label for="apparatus">Apparatus: </label>
+    <input type="text" name="apparatus" value="">
+    <label for="difficulty">Difficulty: </label>
+    <input type="text" name="difficulty" value="">
+    <label for="description">Description:</label>
+    <input type="text" name="description" value="">
+    <label for="image">Image:</label>
+    <input type="file" name="image" value="fileupload">
+    <input type="submit" name="" value="Create Entry">
+    #<%= f.label "Aerial Image" %>
+    #<%= f.file_field :image %><br>
+</form>
