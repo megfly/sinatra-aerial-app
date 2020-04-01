@@ -16,6 +16,7 @@ class UsersController < ApplicationController
             else 
                 #tells user invalid
                 #redirects to login
+                redirect '/login'
         end
     end 
 
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
 
     get '/logout' do 
         session.clear
-        redirect'/'
+        redirect '/'
     end 
 
 end 
