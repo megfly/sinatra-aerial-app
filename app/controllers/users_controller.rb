@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     #login - render the login form
     get '/login' do 
-        erb :login
+        erb :welcome
     end 
 
     #receive the login form, find the user, log the user in
