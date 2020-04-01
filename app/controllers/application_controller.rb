@@ -10,13 +10,13 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :login
   end
 
   helpers do 
 
     def logged_in? 
-      !!current_user #double bang takes value and turns it into boolean
+      !!current_user #double bang takes value and turns it into boolean, true if user logged in, otherwise false
     end 
 
     def current_user 
