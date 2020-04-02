@@ -21,7 +21,16 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-    #show route
+    #show route for an aerial entry
+    get '/aerial_entries/:id' do 
+        @aerial_entry = AerialEntry.find(params[:id])
+        erb :'/aerial_entries/show'
+    end 
+
+    #This route should send us to aerial_entries/edit.erb and it will render an edit form
+    get '/aerial_entries/:id/edit' do 
+        erb :'aerial_entries/edit'
+    end 
 
     #index for all
 end 
