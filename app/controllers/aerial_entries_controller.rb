@@ -29,7 +29,7 @@ class AerialEntriesController < ApplicationController
 
     #This route should send us to aerial_entries/edit.erb and it will render an edit form
     get '/aerial_entries/:id/edit' do 
-        erb :'aerial_entries/edit'
+        erb :'/aerial_entries/edit' #file
     end 
 
     #index for all

@@ -1,1 +1,9 @@
 SHOW FOR AERIAL ENTRY
+
+<h1><p><%= @aerial_entry.move_name %></p></h1>
+<h2><p><%= @aerial_entry.apparatus %></p></h2>
+<h2><p><%= @aerial_entry.difficulty %></p></h2>
+<h2><p><%= @aerial_entry.description %></p></h2>
+<h2><p><img src="<%= @aerial_entry.image %>" alt="aerial_entry"></p></h2>
+
+<a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
