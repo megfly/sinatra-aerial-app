@@ -27,6 +27,10 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find_by(id: session[:user_id])
     end 
 
+    def current_user_owns_entry?(aerial_entry)
+      aerial_entry.user == current_user
+    end 
+
   end 
 
 end
