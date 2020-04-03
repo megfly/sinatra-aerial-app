@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.find_by(username: params[:username])
             if @user && @user.authenticate(params[:password]) #if user returns nil (falsey) it would go to else
                 session[:user_id] = @user.id
-                puts session 
+                #puts session 
                 redirect "users/#{@user.id}"
             else 
                 flash[:error] = "Invalid username or password. Please sign up or try again."
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     get '/users/:id' do 
         @user = User.find_by(id: params[:id])
         redirect_if_not_logged_in 
-        
+
         erb :'/users/show'
     end 
 

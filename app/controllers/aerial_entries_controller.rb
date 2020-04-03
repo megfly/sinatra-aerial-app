@@ -13,15 +13,13 @@ class AerialEntriesController < ApplicationController
     #post aerial entries to create a new entry
     post '/aerial_entries' do 
         #create new entry and save to db. Only want to save entry if it has content. Only create if user is logged in.
-        if !logged_in?
-            redirect '/'
-        end 
+        redirect_if_not_logged_in
         if params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" #is not an empty string
             flash[:message] = "Entry created!"
             @aerial_entry = AerialEntry.create(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description], user_id: current_user.id)
             redirect "/aerial_entries/#{@aerial_entry.id}"
         else 
-            flash[:message] = "No content" #maybe do :error and style so its red..
+            flash[:error] = "No content"
             #flash messages dont work with erb
             redirect '/aerial_entries/new'
         end 
@@ -73,17 +71,5 @@ class AerialEntriesController < ApplicationController
     def set_aerial_entry #find users particular journal entry
         @aerial_entry = AerialEntry.find(params[:id])
     end 
-
-    #def only_current_user
-        #if logged_in?
-            #if @aerial_entry.user == current_user
-                #erb :'/aerial_entries/edit' #file
-            #else
-                #redirect "/users/#{current_user.id}"
-            #end
-        #else 
-            #redirect '/'
-        #end 
-    #end 
 
 end 
