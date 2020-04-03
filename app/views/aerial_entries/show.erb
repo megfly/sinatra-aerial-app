@@ -8,6 +8,10 @@ SHOW FOR AERIAL ENTRY
 
 <% if current_user_owns_entry?(@aerial_entry) %>
     <a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
-
-    Delete Link
+    <br>
+    <br>
+    <form class="" action="/aerial_entries/<%= @aerial_entry.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE"> #rackmethodoverride
+        <input type="submit" name="" value="Delete this Entry">
+    </form>
 <% end %>
