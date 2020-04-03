@@ -1,1 +1,9 @@
 INDEX PAGE FOR AERIAL ENTRIES
+
+<% @aerial_entries.each do |aerial_entry| %>
+    <h6><a href="/aerial_entries/<%= aerial_entry.id %>"><%= aerial_entry.created_at %></a></h6>
+    <p><%= aerial_entry.move_name %></p>
+    <p>By <%= aerial_entry.user.name %></p>
+    <br>
+    <br>
+<% end %>
