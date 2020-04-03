@@ -1,5 +1,10 @@
 class AerialEntriesController < ApplicationController
 
+    get '/aerial_entries' do 
+        @aerial_entries = AerialEntry.all
+        erb :'/aerial_entries/index' #file reference
+    end 
+
     #get to render form
     get '/aerial_entries/new' do 
         erb :'/aerial_entries/new'
