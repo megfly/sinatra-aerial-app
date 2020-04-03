@@ -15,9 +15,11 @@
   </head>
   <body>
     <div class="navbar">
+    <% if logged_in? %>
       <a href="logout">Logout</a>
       <a href="/aerial_entries">All Aerial Entries</a>
       <a href="/aerial_entries/new">New Entry</a>
+    <% end %>
     </div>
 
     <div class="wrapper">
