@@ -1,1 +1,17 @@
-EDIT FORM
+EDIT PAGE FOR JOURNAL ENTRY
+
+<form class="" action="/aerial_entries/<%= @aerial_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="patch"> #rackmethodoverride in config
+    <label for="move_name">Move Name: </label>
+    <input type="text" name="move_name" value="<%= @aerial_entry.move_name %>">
+    <label for="apparatus">Apparatus: </label>
+    <input type="text" name="apparatus" value="<%= @aerial_entry.apparatus %>">
+    <label for="difficulty">Difficulty: </label>
+    <input type="text" name="difficulty" value="<%= @aerial_entry.difficulty %>">
+    <label for="description">Description:</label>
+    <textarea name="description" style="width:auto; height:auto;"><%= @aerial_entry.description %>
+    </textarea>
+    <label for="image">Image:</label>
+    <input type="file" name="image" value="fileupload" value="<%= @aerial_entry.image %>">
+    <input type="submit" name="" value="Edit Entry">
+</form>
