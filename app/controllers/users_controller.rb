@@ -2,20 +2,19 @@ class UsersController < ApplicationController
 
     #login - render the login form
     get '/login' do 
-        erb :welcome
+        erb :login
     end 
 
     #receive the login form, find the user, log the user in
     post '/login' do 
         #find user, authenticate user, log in user, redirect to users landing page
         @user = User.find_by(username: params[:username])
-            if @user.authenticate(params[:password])
+            if @user && @user.authenticate(params[:password]) #if user returns nil (falsey) it would go to else
                 session[:user_id] = @user.id
                 puts session 
                 redirect "users/#{@user.id}"
             else 
-                #tells user invalid
-                #redirects to login
+                flash[:message] = "Invalid username or password. Please sign up or try again."
                 redirect '/login'
         end
     end 
