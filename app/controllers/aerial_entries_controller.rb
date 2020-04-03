@@ -47,7 +47,16 @@ class AerialEntriesController < ApplicationController
         redirect "/aerial_entries/#{@aerial_entries.id}"
     end 
 
-    #index for all
+    delete '/aerial_entries/:id' do 
+        set_aerial_entry 
+        if current_user_owns_entry?(@aerial_entry)
+            @aerial_entry.destroy
+            redirect '/aerial_entries' #redirect to take care of an action and send us on our way(change something). get request- erb will 
+            #SHOW a form
+        else 
+            redirect '/aerial_entries'
+        end 
+    end 
 
 
     private 
@@ -68,6 +77,4 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-    #make helper method to ensure users cant modify content created by someone else
-    #edit update, helper
 end 
