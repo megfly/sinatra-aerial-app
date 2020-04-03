@@ -6,4 +6,8 @@ SHOW FOR AERIAL ENTRY
 <h2><p><%= @aerial_entry.description %></p></h2>
 <h2><p><img src="<%= @aerial_entry.image %>" alt="aerial_entry"></p></h2>
 
-<a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
+<% if current_user_owns_entry?(@aerial_entry) %>
+    <a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
+
+    Delete Link
+<% end %>
