@@ -30,6 +30,28 @@ class AerialEntriesController < ApplicationController
     #This route should send us to aerial_entries/edit.erb and it will render an edit form
     get '/aerial_entries/:id/edit' do 
         set_aerial_entry
+        only_current_user 
+    end 
+
+    #This actions job is to find the entry, edit the entry, redirect to show page
+    patch '/aerial_entries/:id' do 
+        set_aerial_entry
+        only_current_user
+        @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty:
+        params[:difficulty], description: params[:description])
+        redirect "/aerial_entries/#{@aerial_entries.id}"
+    end 
+
+    #index for all
+
+
+    private 
+
+    def set_aerial_entry #find users particular journal entry
+        @aerial_entry = AerialEntry.find(params[:id])
+    end 
+
+    def only_current_user
         if logged_in?
             if @aerial_entry.user == current_user
                 erb :'/aerial_entries/edit' #file
@@ -39,22 +61,6 @@ class AerialEntriesController < ApplicationController
         else 
             redirect '/'
         end 
-    end 
-
-    #This actions job is to find the entry, edit the entry, redirect to show page
-    patch '/aerial_entries/:id' do 
-        set_aerial_entry
-        @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty:
-        params[:difficulty], description: params[:description])
-        redirect "/aerial_entries/#{@aerial_entries.id}"
-    end 
-
-    #index for all
-
-    private 
-
-    def set_aerial_entry #find users particular journal entry
-        @aerial_entry = AerialEntry.find(params[:id])
     end 
 
     #make helper method to ensure users cant modify content created by someone else
