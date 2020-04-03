@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     get '/users/:id' do 
         @user = User.find_by(id: params[:id])
         #this is broken 
-        erb :'/users/show'
+        redirect '/users/show'
     end 
 
     get '/logout' do 

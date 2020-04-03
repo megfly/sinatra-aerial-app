@@ -18,8 +18,7 @@ class AerialEntriesController < ApplicationController
         end 
         if params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" #is not an empty string
             flash[:message] = "Entry created!"
-            @aerial_entry = AerialEntry.create(move_name: params[:move_name], apparatus: params[:apparatus], difficulty:
-            params[:difficulty], description: params[:description], user_id: current_user.id)
+            @aerial_entry = AerialEntry.create(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description], user_id: current_user.id)
             redirect "/aerial_entries/#{@aerial_entry.id}"
         else 
             flash[:message] = "No content" #maybe do :error and style so its red..
@@ -44,10 +43,8 @@ class AerialEntriesController < ApplicationController
     patch '/aerial_entries/:id' do 
         set_aerial_entry
         if logged_in?
-            if @aerial_entry.user == current_user && params[:move_name] !="", params[:apparatus] !="", params[:difficulty] !="",
-                params[:description] !="" 
-            @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty:
-            params[:difficulty], description: params[:description])
+            if @aerial_entry.user == current_user && params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !=""
+            @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description])
         redirect "/aerial_entries/#{@aerial_entries.id}"
             else 
                 redirect "users/#{current_user.id}"
