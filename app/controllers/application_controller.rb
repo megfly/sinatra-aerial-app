@@ -18,6 +18,7 @@ class ApplicationController < Sinatra::Base
     end 
   end
 
+
   helpers do 
 
     def logged_in? 
@@ -30,6 +31,15 @@ class ApplicationController < Sinatra::Base
 
     def current_user_owns_entry?(aerial_entry)
       aerial_entry.user == current_user
+    end 
+
+    def redirect_if_not_logged_in 
+      if 
+        !logged_in? #if not logged in
+        flash[:error] = "Must be logged in to view this page"
+      else
+        redirect '/'
+      end 
     end 
 
   end 

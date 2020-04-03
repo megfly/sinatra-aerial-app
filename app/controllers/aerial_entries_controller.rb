@@ -36,22 +36,24 @@ class AerialEntriesController < ApplicationController
     #This route should send us to aerial_entries/edit.erb and it will render an edit form
     get '/aerial_entries/:id/edit' do 
         set_aerial_entry
-        only_current_user 
+        redirect_if_not_logged_in
+        if current_user_owns_entry?(@aerial_entry)
+            erb :'/aerial_entries/edit'
+        else 
+            redirect "users/#{current_user.id}"
+        end 
     end 
 
     #This actions job is to find the entry, edit the entry, redirect to show page
     patch '/aerial_entries/:id' do 
         set_aerial_entry
-        if logged_in?
-            if @aerial_entry.user == current_user && params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !=""
-            @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description])
+        redirect_if_not_logged_in
+            if @aerial_entry.user == current_user && params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" && [:image] !=""
+            @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description], image: params[:image])
         redirect "/aerial_entries/#{@aerial_entries.id}"
             else 
                 redirect "users/#{current_user.id}"
             end 
-        else 
-            redirect '/'
-        end 
     end 
 
     delete '/aerial_entries/:id' do 
@@ -72,16 +74,16 @@ class AerialEntriesController < ApplicationController
         @aerial_entry = AerialEntry.find(params[:id])
     end 
 
-    def only_current_user
-        if logged_in?
-            if @aerial_entry.user == current_user
-                erb :'/aerial_entries/edit' #file
-            else
-                redirect "/users/#{current_user.id}"
-            end
-        else 
-            redirect '/'
-        end 
-    end 
+    #def only_current_user
+        #if logged_in?
+            #if @aerial_entry.user == current_user
+                #erb :'/aerial_entries/edit' #file
+            #else
+                #redirect "/users/#{current_user.id}"
+            #end
+        #else 
+            #redirect '/'
+        #end 
+    #end 
 
 end 
