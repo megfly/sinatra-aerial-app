@@ -1,24 +1,5 @@
 class UsersController < ApplicationController
 
-    #login - render the login form
-    get '/login' do 
-        erb :login
-    end 
-
-    #receive the login form, find the user, log the user in
-    post '/login' do 
-        #find user, authenticate user, log in user, redirect to users landing page
-        @user = User.find_by(username: params[:username])
-            if @user && @user.authenticate(params[:password]) #if user returns nil (falsey) it would go to else
-                session[:user_id] = @user.id
-                #puts session 
-                redirect "users/#{@user.id}"
-            else 
-                flash[:error] = "Invalid username or password. Please sign up or try again."
-                redirect '/login'
-        end
-    end 
-
     #signup - render the signup form
     get '/signup' do 
         erb :signup
@@ -26,7 +7,7 @@ class UsersController < ApplicationController
 
     post '/users' do #create new user and persist new user to the database
         #{"name"=>"Name", etc}
-        if params[:name] != "" &&[:email] !="" && params[:password] != "" #not equal to string
+        if params[:name] != "" &&[:email] !="" && params[:password] != "" #not equal to  empty string
             @user = User.create(params)
             session[:user_id] = @user.id #logging user in 
             flash[:message] = "Your account has been created, #{@user.name}!"
@@ -45,11 +26,6 @@ class UsersController < ApplicationController
         redirect_if_not_logged_in 
 
         erb :'/users/show'
-    end 
-
-    get '/logout' do 
-        session.clear
-        redirect '/'
     end 
 
 end 
