@@ -53,7 +53,7 @@ class AerialEntriesController < ApplicationController
                 redirect "users/#{current_user.id}"
             end 
     end 
-
+    #destroy
     delete '/aerial_entries/:id' do 
         set_aerial_entry 
         if current_user_owns_entry?(@aerial_entry)
