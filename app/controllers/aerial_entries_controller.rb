@@ -22,9 +22,10 @@ class AerialEntriesController < ApplicationController
             flash[:error] = "No content"
             #flash messages dont work with erb
             redirect '/aerial_entries/new'
+        end 
         else 
             redirect '/'
-        end 
+         
         end 
     end 
 
