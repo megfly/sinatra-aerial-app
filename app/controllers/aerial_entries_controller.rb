@@ -5,10 +5,16 @@ class AerialEntriesController < ApplicationController
         erb :'/aerial_entries/index' #file reference
     end 
 
+
+
+
     #get to render new aerial entry form
     get '/aerial_entries/new' do 
         erb :'/aerial_entries/new'
     end 
+
+
+
 
     #post aerial entries to create a new entry
     post '/aerial_entries' do 
@@ -29,11 +35,19 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
+
+
+
+
     #show route for an aerial entry
     get '/aerial_entries/:id' do 
         set_aerial_entry
         erb :'/aerial_entries/show'
     end 
+
+
+
+
 
     #This route should send us to aerial_entries/edit.erb and it will render an edit form
     get '/aerial_entries/:id/edit' do 
@@ -49,6 +63,9 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
+
+
+
     #This actions job is to find the entry, edit the entry, redirect to show page
     patch '/aerial_entries/:id' do 
         set_aerial_entry
@@ -57,8 +74,8 @@ class AerialEntriesController < ApplicationController
             if @aerial_entry.user == current_user && params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" && [:image] !=""
                 @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description], 
                 image: params[:image])
-        #BELOW DIDNT WORK
-                redirect "/aerial_entries/#{@aerial_entries.id}"
+                @aerial_entry.save
+                redirect "/aerial_entries/#{@aerial_entry.id}"
             else 
                 redirect "users/#{current_user.id}"
             end 
@@ -66,6 +83,9 @@ class AerialEntriesController < ApplicationController
             redirect '/'
         end 
     end 
+
+
+
 
     #destroy
     delete '/aerial_entries/:id' do 
@@ -78,6 +98,9 @@ class AerialEntriesController < ApplicationController
             redirect '/aerial_entries'
         end 
     end 
+
+
+
 
 
     private 
