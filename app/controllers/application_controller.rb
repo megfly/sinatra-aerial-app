@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
             session[:user_id] = @user.id #logging user in 
             flash[:message] = "Your account has been created, #{@user.name}!"
             # THIS ISNT WORKING
-            redirect "/users/show"  #{@user.id}" #url
+            redirect "users/#{@user.id}"  #{@user.id}" #url
         else 
             #not valid
             flash[:error] = "Account creation failed. Please enter a name, username and password."
@@ -61,14 +61,14 @@ class ApplicationController < Sinatra::Base
     end 
 
     
-    get '/users/show' do 
-        @user = User.find(session[:user_id])
-        erb :'/users/show'
-    end 
+    #get '/users/show' do 
+        #@user = User.find(session[:user_id])
+        #erb :'/users/show'
+    #end 
 
 
 
-        #user show route 
+        #user show route- dynamic
         get '/users/:id' do 
           if !logged_in? #if not logged in
               flash[:error] = "Must be logged in to view this page"
