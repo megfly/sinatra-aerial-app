@@ -16,6 +16,7 @@
 
 
   <body>
+
     <div class="navbar">
     <% if logged_in? %>
       <a href="/users/#{current_user.id}">Home Page</a>
@@ -37,21 +38,28 @@
 
         <%= yield %>
 
+      <div class="lyraimages">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/7260fe77476997.5c88cd34b0725.png">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/b9955a77476997.5c88cd34b1fec.png">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/87a95e77476997.5c88cd34b178d.png">
+      </div>
+
       <footer class="branding">
         <small>&copy; 2020 <strong>SinatraAerialApp</strong></small>
       </footer>
     </div>
 
-
-    <p style="font-size: 0.9rem;font-style: italic;"><img style="display: block;" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/7260fe77476997.5c88cd34b0725.png" 
-    alt="Enchanting Aerial"><a href="https://www.behance.net/gallery/77476997/Enchanting-Aerial">"Enchanting Aerial"</a><span> by <span>Andreea Niculae</span>
-    </span> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY-NC-ND 4.0</a>
+    <p>
+    <a href="https://www.behance.net/gallery/77476997/Enchanting-Aerial">"Enchanting Aerial"</a>
+    <span> by <span>Andreea Niculae</span></span> is licensed under 
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html" style="margin-right: 5px;">CC BY-NC-ND 4.0</a>
     <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=ccsearch&atype=html" target="_blank" rel="noopener noreferrer" 
     style="display: inline-block;white-space: none;margin-top: 2px;margin-left: 3px;height: 22px !important;">
     <img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc_icon.svg" />
     <img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-by_icon.svg" />
     <img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-nc_icon.svg" />
     <img style="height: inherit;margin-right: 3px;display: inline-block;" src="https://search.creativecommons.org/static/img/cc-nd_icon.svg" /></a></p>
+
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <!--[if lt IE 7]>

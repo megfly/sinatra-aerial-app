@@ -13,18 +13,20 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/7260fe77476997.5c88cd34b0725.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: 50px 150px;
-    background-color: black;
+    background-color: lightblue;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
+  .lyraimages {
+    width: 300px;
+    height: auto;
+    float: left;
+  }
+
   .wrapper {
-    background: #fff;
+    background: gold;
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
