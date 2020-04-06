@@ -13,7 +13,11 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/7260fe77476997.5c88cd34b0725.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50px 150px;
+    background-color: black;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
