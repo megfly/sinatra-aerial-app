@@ -1,17 +1,26 @@
-SHOW FOR AERIAL ENTRY
 
-<h1><p><%= @aerial_entry.move_name %></p></h1>
-<h2><p><%= @aerial_entry.apparatus %></p></h2>
-<h2><p><%= @aerial_entry.difficulty %></p></h2>
-<h2><p><%= @aerial_entry.description %></p></h2>
-<h2><p><img src="<%= @aerial_entry.image %>" alt="aerial_entry"></p></h2>
+
+<h1><%= @aerial_entry.move_name %></h1>
+<br>
+<h2><label for="apparatus">Apparatus: </label>
+<%= @aerial_entry.apparatus %></h2>
+<br>
+<h2><label for="difficulty">Difficulty: </label>
+<%= @aerial_entry.difficulty %></h2>
+<br>
+<h2><label for="description">Description: </label>
+<%= @aerial_entry.description %></h2>
+<br>
+<h2><img src="<%= @aerial_entry.image %>" alt="aerial_entry"></h2>
+<br><br>
 
 <% if current_user_owns_entry?(@aerial_entry) %>
     <a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
-    <br>
-    <br>
+    <br><br>
     <form class="" action="/aerial_entries/<%= @aerial_entry.id %>" method="post">
         <input type="hidden" name="_method" value="DELETE"> 
         <input type="submit" name="" value="Delete this Entry">
     </form>
 <% end %>
+
+<br><br>

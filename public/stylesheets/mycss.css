@@ -1,0 +1,45 @@
+h1 {
+    color: gold;
+}
+
+body {
+    
+    background-color: gray;
+    color: white;
+    font-family: Sans-Serif;
+    line-height: 18px;
+  }
+
+  .wrapper {
+    background: goldenrod;
+    background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/1400/7260fe77476997.5c88cd34b0725.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    margin: 16px auto;
+    width: 300px;
+    padding: 2.25%; /* 18px / 800px */
+    width: 85%;
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 54px;
+    float: center;
+  }
+
+  a:link, a:visited {
+    background-color: gray;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: purple;
+  }

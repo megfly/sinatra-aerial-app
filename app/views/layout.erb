@@ -11,7 +11,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+  <link rel="stylesheet" href="/stylesheets/mycss.css">
   </head>
 
 
@@ -19,8 +19,7 @@
 
     <div class="navbar">
     <% if logged_in? %>
-      <a href="/users/#{current_user.id}">Home Page</a>
-      <a href="logout">Logout</a>
+      <a href="/logout">Logout</a>
       <a href="/aerial_entries">All Aerial Entries</a>
       <a href="/aerial_entries/new">New Entry</a>
     <% end %>
@@ -38,11 +37,7 @@
 
         <%= yield %>
 
-      <div class="lyraimages">
-        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/7260fe77476997.5c88cd34b0725.png">
-        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/b9955a77476997.5c88cd34b1fec.png">
-        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/87a95e77476997.5c88cd34b178d.png">
-      </div>
+
 
       <footer class="branding">
         <small>&copy; 2020 <strong>SinatraAerialApp</strong></small>
