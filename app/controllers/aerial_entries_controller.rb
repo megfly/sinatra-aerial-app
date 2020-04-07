@@ -20,10 +20,10 @@ class AerialEntriesController < ApplicationController
     post '/aerial_entries' do 
         #create new entry and save to db. Only want to save entry if it has content. Only create if user is logged in.
         if logged_in?
-            if params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" #is not an empty string
+            if params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" && [:image] !="" #is not an empty string
                 flash[:message] = "Entry created!"
                 @aerial_entry = AerialEntry.create(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description], 
-                user_id: current_user.id)
+                image: img, user_id: current_user.id)
                 redirect "/aerial_entries/#{@aerial_entry.id}"
             else 
                 flash[:error] = "No content"
@@ -35,7 +35,7 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-
+    
 
 
 
