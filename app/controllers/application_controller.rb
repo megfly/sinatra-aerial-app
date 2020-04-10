@@ -42,10 +42,10 @@ class ApplicationController < Sinatra::Base
   end 
 
   post '/login' do #receive the login form, find the user, log the user in
-    @user = User.find_by(username: params[:username]) #find user, authenticate user, log in user, redirect to users landing page
+    @user = User.find_by(username: params[:username]) #find user by unique username redirect to users landing page
       if params[:username] !="" && params[:password] != ""
-        @user.authenticate(params[:password]) #authenticate user #if user returns nil (falsey) it would go to else .....#if @user.save && authenticate??
-        session[:user_id] = @user.id
+        @user.authenticate(params[:password]) #authenticate user with correct pw
+        session[:user_id] = @user.id #log in user to their session
         puts session #updates action
         redirect "users/#{@user.id}"
       else 
@@ -80,18 +80,6 @@ class ApplicationController < Sinatra::Base
     def current_user 
       @current_user ||= User.find_by(id: session[:user_id])
       #This Operator only sets the variable if the variable is false or Nil. so x ||= y this means x || x = y so if x is nil or false set x to be the value of y.
-    end 
-
-    def current_user_owns_entry?(aerial_entry)
-      aerial_entry.user == current_user
-    end 
-
-    def redirect_if_not_logged_in 
-      if !logged_in? #if not logged in
-        flash[:error] = "Must be logged in to view this page"
-      else
-        redirect '/'
-      end 
     end 
 
   end 

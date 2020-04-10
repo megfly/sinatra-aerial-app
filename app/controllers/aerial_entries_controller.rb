@@ -75,14 +75,14 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-
-
-
-
     private 
 
     def set_aerial_entry #find users particular journal entry
         @aerial_entry = AerialEntry.find(params[:id])
+    end 
+
+    def current_user_owns_entry?(aerial_entry)
+        aerial_entry.user == current_user
     end 
 
 end 
