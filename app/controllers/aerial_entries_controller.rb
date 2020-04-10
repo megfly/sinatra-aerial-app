@@ -5,20 +5,13 @@ class AerialEntriesController < ApplicationController
         erb :'/aerial_entries/index' #file reference
     end 
 
-
-
-
-    #get to render new aerial entry form
     get '/aerial_entries/new' do 
+    #get to render new aerial entry form
         erb :'/aerial_entries/new'
     end 
 
-
-
-
-    #post aerial entries to create a new entry
     post '/aerial_entries' do 
-        #create new entry and save to db. Only want to save entry if it has content. Only create if user is logged in.
+    #create new entry and save to db. Only want to save entry if it has content. Only create if user is logged in.
         if logged_in?
             if params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" && [:image] !="" #is not an empty string
                 flash[:message] = "Entry created!"
@@ -35,22 +28,14 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-    
-
-
-
-    #show route for an aerial entry
     get '/aerial_entries/:id' do 
+    #show route for an aerial entry
         set_aerial_entry
         erb :'/aerial_entries/show'
     end 
 
-
-
-
-
-    #This route should send us to aerial_entries/edit.erb and it will render an edit form
     get '/aerial_entries/:id/edit' do 
+    #This route should send us to aerial_entries/edit.erb and it will render an edit form
         set_aerial_entry
         if logged_in?
             if current_user_owns_entry?(@aerial_entry)
@@ -63,13 +48,9 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-
-
-
-    #This actions job is to find the entry, edit the entry, redirect to show page
     patch '/aerial_entries/:id' do 
+    #This actions job is to find the entry, edit the entry, redirect to show page
         set_aerial_entry
-        #redirect_if_not_logged_in
         if logged_in?
             if @aerial_entry.user == current_user && params[:move_name] !="" && [:apparatus] !="" && [:difficulty] !="" && [:description] !="" && [:image] !=""
                 @aerial_entry.update(move_name: params[:move_name], apparatus: params[:apparatus], difficulty: params[:difficulty], description: params[:description], 
@@ -84,16 +65,11 @@ class AerialEntriesController < ApplicationController
         end 
     end 
 
-
-
-
-    #destroy
     delete '/aerial_entries/:id' do 
         set_aerial_entry 
         if current_user_owns_entry?(@aerial_entry)
             @aerial_entry.destroy
-            redirect '/aerial_entries' #redirect to take care of an action and send us on our way(change something). get request- erb will 
-            #SHOW a form
+            redirect '/aerial_entries'
         else 
             redirect '/aerial_entries'
         end 
@@ -108,13 +84,5 @@ class AerialEntriesController < ApplicationController
     def set_aerial_entry #find users particular journal entry
         @aerial_entry = AerialEntry.find(params[:id])
     end 
-
-    #def redirect_if_not_logged_in 
-        #if !logged_in? #if not logged in
-          #flash[:error] = "Must be logged in to view this page"
-        #else
-          #redirect '/'
-        #end 
-      #end 
 
 end 
