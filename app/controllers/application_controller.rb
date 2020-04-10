@@ -43,7 +43,8 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do #receive the login form, find the user, log the user in
     @user = User.find_by(username: params[:username]) #find user, authenticate user, log in user, redirect to users landing page
-      if @user.authenticate(params[:password]) #if user returns nil (falsey) it would go to else .....#if @user.save && authenticate??
+      if params[:username] !="" && params[:password] != ""
+        @user.authenticate(params[:password]) #authenticate user #if user returns nil (falsey) it would go to else .....#if @user.save && authenticate??
         session[:user_id] = @user.id
         puts session #updates action
         redirect "users/#{@user.id}"
@@ -53,8 +54,6 @@ class ApplicationController < Sinatra::Base
       end
     end 
 
-
-        
     get '/users/:id' do #user show route- dynamic
       if !logged_in? #if not logged in
         flash[:error] = "Must be logged in to view this page"
