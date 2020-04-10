@@ -4,12 +4,10 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
-#in order to send PATCH and DELETE requests, I will need to add a line of code here
-
-use Rack::MethodOverride
+use Rack::MethodOverride #patch and delete
 
 #here is where we will mount other controllers with 'use'
-#use UsersController
+
 use AerialEntriesController
 
 run ApplicationController
