@@ -1,11 +1,7 @@
-This is an App that allows users to keep track of new aerial tricks they are learning! It allows a user to sign up, log in and create "aerial entries". The entries include the name of the move, apparatus, difficulty, description and an image. Users can edit and delete their own entries.
+Description: This is an App that allows users to keep track of new aerial tricks they are learning! It allows a user to sign up, log in and create "aerial entries". The entries include the name of the move, apparatus, difficulty, description and an image. Users can edit and delete their own entries.
 
-License
+Install Instructions: To download this app, git clone: https://github.com/megfly/sinatra-aerial-app.git. Run bundle install and then run shotgun to get the app running in browswer.
 
-Copyright <2020> <megfly>
+Contributor's Guide: https://www.contributor-covenant.org/ 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+License: https://opensource.org/licenses/MIT
