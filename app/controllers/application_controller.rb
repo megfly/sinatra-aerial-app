@@ -27,7 +27,7 @@ class ApplicationController < Sinatra::Base
       if params[:username] !="" && params[:password] != ""
         @user.authenticate(params[:password]) #authenticate user with correct pw
         session[:user_id] = @user.id #log in user to their session
-        puts session #updates action
+        #puts session #updates action
         redirect "users/#{@user.id}"
       else 
         flash[:error] = "Invalid username or password. Please sign up or try again."
