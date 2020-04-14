@@ -11,16 +11,21 @@
 <h2><label for="description">Description: </label>
 <%= @aerial_entry.description %></h2>
 <br>
+<h2> Entry by:
+<%= @aerial_entry.user.name %> </h2>
+<br>
 <h2><img src="<%= @aerial_entry.image %>" alt="aerial_entry"></h2>
 <br>
-#<h2><label for ="name"> By </label>
-#<%= @aerial_entry.name %></h2><br>
 
-<% if current_user_owns_entry?(@aerial_entry) %>
+<br> <br>
+
+
+<% if @aerial_entry.user == current_user %>
     <a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
     <br><br>
-    <form class="" action="/aerial_entries/<%= @aerial_entry.id %>" method="post">
-        <input type="hidden" name="_method" value="DELETE"> 
+
+    <form action="/aerial_entries/<%= @aerial_entry.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="DELETE"> 
         <input type="submit" name="" value="Delete this Entry">
     </form>
 <% end %>
