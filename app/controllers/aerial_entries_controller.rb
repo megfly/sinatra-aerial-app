@@ -84,6 +84,4 @@ class AerialEntriesController < ApplicationController
        end 
     end 
 
-    
-
 end 
