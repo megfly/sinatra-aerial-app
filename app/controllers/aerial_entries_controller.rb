@@ -37,12 +37,9 @@ class AerialEntriesController < ApplicationController
     get '/aerial_entries/:id/edit' do 
     #This route should send us to aerial_entries/edit.erb and it will render an edit form
         set_aerial_entry
-        if logged_in?
-            if current_user_owns_entry?(@aerial_entry)
-                erb :'/aerial_entries/edit'
-            else 
-                redirect "users/#{current_user.id}"
-            end 
+        if logged_in? 
+            current_user_owns_entry 
+            erb :'/aerial_entries/edit'
         else 
             redirect '/'
         end 
@@ -82,7 +79,11 @@ class AerialEntriesController < ApplicationController
     end 
 
     def current_user_owns_entry?(aerial_entry)
-        aerial_entry.user == current_user
+       if aerial_entry.user != current_user
+            redirect '/aerial_entries'
+       end 
     end 
+
+    
 
 end 
