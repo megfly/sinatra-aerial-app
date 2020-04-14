@@ -14,7 +14,7 @@ class UsersController < ApplicationController
           flash[:message] = "Your account has been created, #{@user.name}!"
           redirect "users/#{@user.id}"  #{@user.id}" #url
         else 
-          flash[:error] = "Account creation failed. Please enter a name, username and password."
+          flash[:error] = "All fields required."
           redirect '/signup'
         end 
       end 
