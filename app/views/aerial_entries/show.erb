@@ -12,7 +12,9 @@
 <%= @aerial_entry.description %></h2>
 <br>
 <h2><img src="<%= @aerial_entry.image %>" alt="aerial_entry"></h2>
-<br><br>
+<br>
+#<h2><label for ="name"> By </label>
+#<%= @aerial_entry.name %></h2><br>
 
 <% if current_user_owns_entry?(@aerial_entry) %>
     <a href="/aerial_entries/<%= @aerial_entry.id %>/edit">Edit Entry</a>
