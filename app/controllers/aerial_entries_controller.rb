@@ -29,8 +29,8 @@ class AerialEntriesController < ApplicationController
     end 
 
     get '/aerial_entries/:id' do 
-    #show route for an aerial entry
-        set_aerial_entry
+        @aerial_entry = AerialEntry.find_by_id(params[:id])
+#THIS ISNT WORKING NOW
         erb :'/aerial_entries/show'
     end 
 
