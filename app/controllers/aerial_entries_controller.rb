@@ -38,7 +38,7 @@ class AerialEntriesController < ApplicationController
     #This route should send us to aerial_entries/edit.erb and it will render an edit form
         set_aerial_entry
         if logged_in? 
-            current_user_owns_entry 
+            current_user_owns_entry?(@aerial_entry)
             erb :'/aerial_entries/edit'
         else 
             redirect '/'
