@@ -30,7 +30,7 @@ class AerialEntriesController < ApplicationController
 
     get '/aerial_entries/:id' do 
         @aerial_entry = AerialEntry.find_by_id(params[:id])
-#THIS ISNT WORKING NOW
+
         erb :'/aerial_entries/show'
     end 
 
